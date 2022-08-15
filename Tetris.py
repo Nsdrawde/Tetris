@@ -95,15 +95,22 @@ def lineClear():
         if rowComplete:
             # print('ROW COMPLETE ', row + 1)
             #  < row complete shift down
-            for rowDone in range(row, 0, -1):
+            print('completed row:', row)
+            
+            
+            for rowDone in range(row-1, 0, -1):
                 for colDone in range(len(grid)):
                     if grid[colDone][rowDone]['active'] == False:
                         grid[colDone][rowDone+1] = grid[colDone][rowDone]
+            
+            
+            
             for col in range(len(grid)):
-                grid[col][0] = {
-                                  'colour': GAME_COLOUR,
-                                  'active': False,
-                               }
+                for row in range(2):    #top 2 rows
+                    grid[col][row] = {
+                                      'colour': GAME_COLOUR,
+                                      'active': False,
+                                   }
             # only clearing bottom row
             # triple square block
 
@@ -133,6 +140,7 @@ JBlock = {'colour': darkBlue, 'matrix': [[1,0,0,0],[1,1,1,0]]}
 square = {'colour': yellow, 'matrix': [[0,1,1,0],[0,1,1,0]]}
 tBlock = {'colour': purple, 'matrix': [[0,1,0,0],[1,1,1,0]]}
 
+# BLOCKS = [longbar, sBlock, zBlock, LBlock, JBlock, square, tBlock]
 BLOCKS = [longbar, square]
 
 
