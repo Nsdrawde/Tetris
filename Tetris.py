@@ -84,10 +84,12 @@ def stopActivePieces():
     lineClear()
 
 def lineClear():
-    for row in range(len(grid[0])-2, 0, -1):
+    # for row in range(len(grid[0])-2, 0, -1):
+    row = len(grid[0])-2  #row = 19
+    while row > 0:
         rowComplete = True
         for col in range(len(grid)):
-
+        # here
             #Check for missing pieces in row
             if grid[col][row]['colour'] == GAME_COLOUR:
                 rowComplete = False
@@ -98,6 +100,7 @@ def lineClear():
             print('completed row:', row)
             
             
+
             for rowDone in range(row-1, 0, -1):
                 for colDone in range(len(grid)):
                     if grid[colDone][rowDone]['active'] == False:
@@ -105,15 +108,16 @@ def lineClear():
             
             
             
-            for col in range(len(grid)):
-                for row in range(2):    #top 2 rows
-                    grid[col][row] = {
+            for colTop in range(len(grid)):
+                for rowTop in range(2):    #top 2 rows
+                    grid[colTop][rowTop] = {
                                       'colour': GAME_COLOUR,
                                       'active': False,
                                    }
             # only clearing bottom row
             # triple square block
-
+        else:
+            row -= 1
 
 
 #VARIABLES
